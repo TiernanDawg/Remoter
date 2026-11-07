@@ -12,14 +12,11 @@ enum RokuDiscovery {
             var next = 0
             let concurrency = 24
 
-            func add(_ host: String) {
+            while next < min(concurrency, hosts.count) {
+                let host = hosts[next]
                 group.addTask {
                     try? await RokuClient(ipAddress: host).verify()
                 }
-            }
-
-            while next < min(concurrency, hosts.count) {
-                add(hosts[next])
                 next += 1
             }
 
@@ -29,8 +26,12 @@ enum RokuDiscovery {
                 }
                 completed += 1
                 progress(completed)
+
                 if next < hosts.count {
-                    add(hosts[next])
+                    let host = hosts[next]
+                    group.addTask {
+                        try? await RokuClient(ipAddress: host).verify()
+                    }
                     next += 1
                 }
             }
