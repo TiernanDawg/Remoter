@@ -1,0 +1,25 @@
+name: Remoter
+options:
+  bundleIdPrefix: com.tiernan
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+targets:
+  Remoter:
+    type: application
+    platform: iOS
+    sources:
+      - path: Remoter
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tiernan.remoter
+        PRODUCT_NAME: Remoter
+        INFOPLIST_FILE: Remoter/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.9"
+    scheme:
+      testTargets: []
