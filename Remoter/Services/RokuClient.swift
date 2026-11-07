@@ -35,14 +35,18 @@ struct RokuClient {
                 .replacingOccurrences(of: "&gt;", with: ">")
         }
 
+        let modelName = value("model-name")
+        let isRokuTV = modelName.localizedCaseInsensitiveContains("TV")
+        let isStreambar = modelName.localizedCaseInsensitiveContains("Streambar")
+
         return RokuDevice(
             ipAddress: ipAddress,
-            modelName: value("model-name"),
+            modelName: modelName,
             modelNumber: value("model-number"),
             serialNumber: value("serial-number"),
             deviceName: value("user-device-name"),
-            supportsVolume: value("supports-audio-volume-control") == "true",
-            supportsPower: value("supports-tv-power-control") == "true",
+            supportsVolume: value("supports-audio-volume-control") == "true" || isRokuTV || isStreambar,
+            supportsPower: value("supports-tv-power-control") == "true" || isRokuTV,
             supportsFindRemote: value("supports-find-remote") == "true"
         )
     }
