@@ -14,6 +14,8 @@ targets:
     platform: iOS
     sources:
       - path: Remoter
+        excludes:
+          - Info.plist
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.tiernan.remoter
