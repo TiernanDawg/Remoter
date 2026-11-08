@@ -296,8 +296,13 @@ struct RemoteView: View {
                 if isLoadingApps {
                     ProgressView("Loading apps…")
                 } else if apps.isEmpty {
-                    ContentUnavailableView("No apps loaded", systemImage: "square.grid.2x2",
-                                           description: Text("Try again while your Roku is awake."))
+                    VStack(spacing: 10) {
+                        Image(systemName: "square.grid.2x2").font(.largeTitle).foregroundStyle(.secondary)
+                        Text("No apps loaded").font(.headline)
+                        Text("Try again while your Roku is awake.")
+                            .font(.footnote).foregroundStyle(.secondary)
+                    }
+                    .padding()
                 } else {
                     List(apps) { app in
                         Button {
