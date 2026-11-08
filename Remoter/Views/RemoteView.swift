@@ -110,7 +110,7 @@ struct RemoteView: View {
                     Text("PICTURE & TV OPTIONS")
                         .font(.system(size: 12, weight: .heavy, design: .rounded))
                         .tracking(1.1)
-                    Text("Open your Roku TV picture menu")
+                    Text("Star menu  ·  Picture settings → Picture mode")
                         .font(.caption).foregroundStyle(.white.opacity(0.72))
                 }
                 Spacer()
