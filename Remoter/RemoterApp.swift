@@ -8,7 +8,6 @@ struct RemoterApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(store)
-                .preferredColorScheme(.dark)
         }
     }
 }
