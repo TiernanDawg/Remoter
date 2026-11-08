@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 enum RemoteTheme: String, CaseIterable, Identifiable {
     case glass
@@ -124,7 +125,7 @@ struct ThemePickerView: View {
 
                     ForEach(RemoteTheme.allCases) { theme in
                         Button {
-                            withAnimation(.snappy(duration: 0.24)) {
+                            withAnimation(.spring(response: 0.30, dampingFraction: 0.84)) {
                                 selection = theme.rawValue
                             }
                         } label: {
